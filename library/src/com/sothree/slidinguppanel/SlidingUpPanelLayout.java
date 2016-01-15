@@ -346,9 +346,9 @@ public class SlidingUpPanelLayout extends ViewGroup {
         }
 
         final float density = context.getResources().getDisplayMetrics().density;
-        if (mPanelHeight == -1) {
-            mPanelHeight = (int) (DEFAULT_PANEL_HEIGHT * density + 0.5f);
-        }
+//        if (mPanelHeight == -1) {
+//            mPanelHeight = (int) (DEFAULT_PANEL_HEIGHT * density + 0.5f);
+//        }
         if (mShadowHeight == -1) {
             mShadowHeight = (int) (DEFAULT_SHADOW_HEIGHT * density + 0.5f);
         }
@@ -819,6 +819,10 @@ public class SlidingUpPanelLayout extends ViewGroup {
 
             if (child == mSlideableView) {
                 mSlideRange = mSlideableView.getMeasuredHeight() - mPanelHeight;
+            } else {
+                if( layoutHeight > child.getMeasuredHeight()){
+                    mPanelHeight = layoutHeight - child.getMeasuredHeight();
+                }
             }
         }
 
